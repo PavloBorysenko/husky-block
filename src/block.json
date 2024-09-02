@@ -1,0 +1,119 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/husky-block",
+	"version": "0.1.0",
+	"title": "Husky Block",
+	"category": "widgets",
+	"icon": "filter",
+	"description": "Block for HUSKY filter.",
+	"example": {},
+	"supports": {
+		"color": {
+			"text": true,
+			"background": true,
+			"link": false,
+			"button": true
+		},
+		"multiple" :false,
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		}
+
+	},
+	"attributes": {
+		"hide_terms_count_txt": {
+			"type": "string",
+			"default": "0"
+		},
+		"redirect": {
+			"type": "string",
+			"default": ""
+		},
+		"woof_start_filtering_btn": {
+			"type": "string",
+			"default": "0"
+		},
+		"dynamic_recount": {
+			"type": "string",
+			"default": "-1"
+		},
+		"autosubmit": {
+			"type": "string",
+			"default": "-1"
+		},
+		"is_ajax": {
+			"type": "string",
+			"default": "0"
+		},		
+		"btn_position": {
+			"type": "string",
+			"default": "b"
+		},
+		"ajax_redraw": {
+			"type": "string",
+			"default": "0"
+		},
+		"mobile_mode": {
+			"type": "string",
+			"default": "0"
+		},
+		"conditionals": {
+			"type": "string",
+			"default": ""
+		},
+		"taxonomies": {
+			"type": "string",
+			"default": ""
+		},		
+		"tax_exclude": {
+			"type": "array",
+			"default": []
+		},
+		"tax_only": {
+			"type": "array",
+			"default": []
+		},
+		"by_only": {
+			"type": "array",
+			"default": []
+		},
+		"autohide": {
+			"type": "string",
+			"default": "0"
+		},
+		"start_filtering_btn": {
+			"type": "string",
+			"default": ""
+		},		
+		"columns_lg": {
+			"type": "string",
+			"default": "3"
+		},
+		"columns_md": {
+			"type": "string",
+			"default": "3"
+		},
+		"columns_sm": {
+			"type": "string",
+			"default": "1"
+		},
+		"padding": {
+			"type": "integer",
+			"default": 5
+		},
+		"max_height": {
+			"type": "integer",
+			"default": 0
+		}		
+		
+			
+	},
+	"textdomain": "husky-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

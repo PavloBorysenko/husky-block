@@ -1,0 +1,11 @@
+{
+    "name": "husky/block",
+    "description": "Block for HUSKY filter",
+    "license": "glp-2.0",
+    "autoload": {
+        "psr-4": {
+            "Husky\\Block\\": "classes/"
+        }
+    },
+    "require": {}
+}
