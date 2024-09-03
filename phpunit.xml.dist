@@ -2,8 +2,8 @@
         colors="true" convertErrorsToExceptions="true"
         convertNoticesToExceptions="true" convertWarningsToExceptions="true">
         <testsuites>
-                <testsuite name="husky-block for variation test">
-                        <file>tests/test-sample.php</file>
+                <testsuite name="husky-block test">
+                        <file>tests/test-husky-block.php</file>
                 </testsuite>
         </testsuites>
 </phpunit>

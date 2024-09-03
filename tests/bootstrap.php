@@ -23,6 +23,14 @@ if ( ! file_exists( "{$_tests_dir}/includes/functions.php" ) ) {
 	exit( 1 );
 }
 
+// set plugin and options for activation
+$GLOBALS['wp_tests_options'] = array(
+	'active_plugins' => array(
+		'woocommerce/woocommerce.php',
+		'woocommerce-products-filter/index.php'
+	),
+	'husky-block_test' => true
+);
 // Give access to tests_add_filter() function.
 require_once "{$_tests_dir}/includes/functions.php";
 

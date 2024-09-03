@@ -39,10 +39,10 @@ function create_block_husky_block_init() {
 add_action( 'init', 'create_block_husky_block_init' );
 
 
-add_action( 'admin_init', function () {
+function init_husky_block_ajax() {
 	if ( class_exists( 'WOOF' ) ) {
 		new Husky\Block\Editor\Ajax( woof() );
 	}
-
-} );
+}
+add_action( 'admin_init', 'init_husky_block_ajax' );
 
