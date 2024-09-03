@@ -1,0 +1,9 @@
+<phpunit bootstrap="tests/bootstrap.php" backupGlobals="false"
+        colors="true" convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true" convertWarningsToExceptions="true">
+        <testsuites>
+                <testsuite name="husky-block for variation test">
+                        <file>tests/test-sample.php</file>
+                </testsuite>
+        </testsuites>
+</phpunit>

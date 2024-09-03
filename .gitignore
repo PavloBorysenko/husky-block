@@ -30,6 +30,11 @@ node_modules/
 # dotenv environment variables file
 .env
 
+.circleci
+.editorconfig
+
+bin
+
 composer.phar
 /vendor/
 .vscode
