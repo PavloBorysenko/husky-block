@@ -27,12 +27,12 @@ class Ajax {
 		add_action( 'wp_ajax_get_all_tax_items', array( $this, 'send_tax_items' ), 20 );
 	}
 	public function send_by_items(): void {
-
-		wp_send_json( $this->prepare_simply_data( $this->get_by_items() ) );
+		wp_die( json_encode( $this->prepare_simply_data( $this->get_by_items() ) ) );
+		//wp_send_json( $this->prepare_simply_data( $this->get_by_items() ) );
 	}
 	public function send_tax_items(): void {
-
-		wp_send_json( $this->prepare_taxanomy_data( $this->get_tax_items() ) );
+		wp_die( json_encode( $this->prepare_taxanomy_data( $this->get_tax_items() ) ) );
+		//wp_send_json( $this->prepare_taxanomy_data( $this->get_tax_items() ) );
 	}
 	private function get_by_items(): array {
 
@@ -40,7 +40,7 @@ class Ajax {
 	}
 	private function get_tax_items(): array {
 
-		return method_exists( $this->woof, 'get_taxonomies' ) ? woof()->get_taxonomies() : array();
+		return method_exists( $this->woof, 'get_taxonomies' ) ? $this->woof->get_taxonomies() : array();
 	}
 	private function prepare_simply_data( array $data ): array {
 

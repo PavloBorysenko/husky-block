@@ -41,7 +41,7 @@ add_action( 'init', 'create_block_husky_block_init' );
 
 function init_husky_block_ajax() {
 	if ( class_exists( 'WOOF' ) ) {
-		new Husky\Block\Editor\Ajax( woof() );
+		new Husky\Block\Editor\Ajax( new \WOOF() );
 	}
 }
 add_action( 'admin_init', 'init_husky_block_ajax' );
