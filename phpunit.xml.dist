@@ -4,7 +4,8 @@
         <testsuites>
                 <testsuite name="husky-block test">
                         <file>tests/test-husky-block.php</file>
-                        <file>tests/test-block-ajax.php</file>
+                        <file>tests/test-ajax-request.php</file>
+                        <file>tests/test-Ajax.php</file>
                 </testsuite>
         </testsuites>
         <groups>
@@ -12,4 +13,5 @@
                         <group>ajax</group>
                 </exclude>
         </groups>
+          
 </phpunit>

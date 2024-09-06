@@ -6,32 +6,15 @@
  * 
  * @group ajax
  */
-class Test_block_Ajax extends WP_Ajax_UnitTestCase {
-
+require_once HUSKY_BLOCK_TEST_PATH . '/Fakes/WoofFake.php';
+class Test_Ajax_Request extends WP_Ajax_UnitTestCase {
 
 	public $ajax;
 
 	public function setup(): void {
 		parent::setup();
 
-
-		$WOOFMock = $this->getMockBuilder( 'WOOF' )
-			->setMethods( [ 'get_taxonomies' ] )
-			->disableOriginalConstructor()
-			->getMock();
-		$WOOFMock->items_keys = array( 'by_price', 'by_text', 'by_author' );
-
-		$test_taxonomies['product_cat'] = new stdClass();
-
-		$test_taxonomies['product_cat']->label = "Category";
-
-		$test_taxonomies['pa_color'] = new stdClass();
-
-		$test_taxonomies['pa_color']->label = "Color";
-
-		$WOOFMock->method( 'get_taxonomies' )->willReturn( $test_taxonomies );
-
-		$this->ajax = new Husky\Block\Editor\Ajax( $WOOFMock );
+		$this->ajax = new Husky\Block\Editor\Ajax( new WoofFake() );
 
 		wp_set_current_user( 1 );
 	}

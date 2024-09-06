@@ -31,7 +31,7 @@ class Ajax {
 		//wp_send_json( $this->prepare_simply_data( $this->get_by_items() ) );
 	}
 	public function send_tax_items(): void {
-		wp_die( json_encode( $this->prepare_taxanomy_data( $this->get_tax_items() ) ) );
+		wp_die( json_encode( $this->prepare_taxonomy_data( $this->get_tax_items() ) ) );
 		//wp_send_json( $this->prepare_taxanomy_data( $this->get_tax_items() ) );
 	}
 	private function get_by_items(): array {
@@ -46,6 +46,9 @@ class Ajax {
 
 		$prepared_data = array();
 		foreach ( $data as $item ) {
+			if ( ! $item ) {
+				continue;
+			}
 			$prepared_data[] = array(
 				'label' => $item,
 				'value' => $item
@@ -54,10 +57,13 @@ class Ajax {
 
 		return $prepared_data;
 	}
-	private function prepare_taxanomy_data( array $taxonomies ): array {
+	private function prepare_taxonomy_data( array $taxonomies ): array {
 
 		$prepared_taxonomies = array();
 		foreach ( $taxonomies as $tax_key => $tax_obj ) {
+			if ( ! is_object( $tax_obj ) || ! property_exists( $tax_obj, 'label' ) ) {
+				continue;
+			}
 			$prepared_taxonomies[] = array(
 				'label' => $tax_obj->label,
 				'value' => $tax_key
