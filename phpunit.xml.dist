@@ -6,6 +6,7 @@
                         <file>tests/test-husky-block.php</file>
                         <file>tests/test-ajax-request.php</file>
                         <file>tests/test-Ajax.php</file>
+                        <file>tests/test-ShortcodeRendering.php</file>
                 </testsuite>
         </testsuites>
         <groups>

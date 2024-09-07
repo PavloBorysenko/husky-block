@@ -35,6 +35,7 @@ class ShortcodeRendering {
 	}
 
 	private function get_padding(): string {
-		return 'padding: ' . isset( $this->attributes['padding'] ) ? $this->attributes['padding'] : '0' . 'px;';
+		$style_string = sprintf( 'padding: %dpx;', isset( $this->attributes['padding'] ) ? $this->attributes['padding'] : '0' );
+		return $style_string;
 	}
 }
