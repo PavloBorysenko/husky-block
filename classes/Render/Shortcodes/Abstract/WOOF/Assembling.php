@@ -80,7 +80,8 @@ abstract class Assembling implements \Husky\Block\Render\Shortcodes\Abstract\Sho
 				$sids[] = $key . "_" . $value;
 			}
 		}
-		return implode( ' ', $sids );
+		$sid_string = implode( ' ', $sids );
+		return $sid_string;
 	}
 
 	protected function get_allowed_atts(): array {
