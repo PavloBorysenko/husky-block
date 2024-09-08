@@ -12,7 +12,7 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 	private string $views_path = '';
 
 	private array $args = array();
-	public function __construct( private \WOOF $woof ) {
+	public function __construct( private \WOOF $woof, private string $HelperClass ) {
 		$this->standard_filters = array(
 			'by_price' => esc_html__( "Search by Price", 'woocommerce-products-filter' ),
 			'by_rating' => esc_html__( "By rating drop-down", 'woocommerce-products-filter' ),
@@ -159,7 +159,7 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 	}
 	private function print_taxonomy_by_key( $tax_slug ): void {
 
-		$primax_class = sanitize_key( \WOOF_HELPER::wpml_translate( $this->args['taxonomies_info'][ $tax_slug ] ?? '' ) );
+		$primax_class = sanitize_key( $this->HelperClass::wpml_translate( $this->args['taxonomies_info'][ $tax_slug ] ?? '' ) );
 
 		$css_classes = "woof_block_html_items";
 
@@ -194,8 +194,8 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 		?>
 		<<?php echo esc_html( apply_filters( 'woof_title_tag', 'h4' ) ); ?>>
 			<?php echo esc_html( $title ) ?>
-			<?php \WOOF_HELPER::draw_tooltipe( $title, $tooltip_text ) ?>
-			<?php \WOOF_HELPER::draw_title_toggle( $show_toggle, $block_is_closed ); ?>
+			<?php $this->HelperClass::draw_tooltipe( $title, $tooltip_text ) ?>
+			<?php $this->HelperClass::draw_title_toggle( $show_toggle, $block_is_closed ); ?>
 		</<?php echo esc_html( apply_filters( 'woof_title_tag', 'h4' ) ); ?>>
 		<?php
 
@@ -264,7 +264,7 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 	}
 	private function get_tax_title( \WP_Taxonomy $taxonomy_info ): string {
 
-		$title = \WOOF_HELPER::wpml_translate( $taxonomy_info );
+		$title = $this->HelperClass::wpml_translate( $taxonomy_info );
 
 		return $title;
 	}
@@ -348,14 +348,14 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 			$woof_filter_btn_txt = esc_html__( 'Filter', 'woocommerce-products-filter' );
 		}
 
-		$woof_filter_btn_txt = \WOOF_HELPER::wpml_translate( null, $woof_filter_btn_txt );
+		$woof_filter_btn_txt = $this->HelperClass::wpml_translate( null, $woof_filter_btn_txt );
 
 		return $woof_filter_btn_txt;
 	}
 	private function get_autohide_btn_txt(): string {
 		$woof_auto_hide_button_txt = '';
 		if ( isset( $this->woof->settings['woof_auto_hide_button_txt'] ) ) {
-			$woof_auto_hide_button_txt = \WOOF_HELPER::wpml_translate( null, $this->woof->settings['woof_auto_hide_button_txt'] );
+			$woof_auto_hide_button_txt = $this->HelperClass::wpml_translate( null, $this->woof->settings['woof_auto_hide_button_txt'] );
 		}
 
 		return $woof_auto_hide_button_txt;

@@ -8,6 +8,9 @@
                         <file>tests/test-Ajax.php</file>
                         <file>tests/test-ShortcodeRendering.php</file>
                         <file>tests/test-ShortcodeAssembling.php</file>
+                        <file>tests/test-HuskyFront.php</file>
+                        <file>tests/test-HuskySimulation.php</file>
+                        <file>tests/test-WOOFShortcode.php</file>
                 </testsuite>
         </testsuites>
         <groups>

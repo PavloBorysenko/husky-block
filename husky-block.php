@@ -30,7 +30,7 @@ define( 'HUSKY_BLOCK_PATH', plugin_dir_path( __FILE__ ) );
  */
 function create_block_husky_block_init() {
 	if ( class_exists( 'WOOF' ) ) {
-		new Husky\Block\Shortcode\WOOFSimulation( woof(), new \Husky\Block\Shortcode\Template\WOOFShortcode( woof() ) );
+		new Husky\Block\Shortcode\WOOFSimulation( woof(), new \Husky\Block\Shortcode\Template\WOOFShortcode( woof(), '\WOOF_HELPER' ) );
 	}
 
 	register_block_type( __DIR__ . '/build' );
