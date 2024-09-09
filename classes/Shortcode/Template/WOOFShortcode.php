@@ -236,7 +236,10 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 	private function get_all_items(): array {
 		$items_order = array();
 
-		$taxonomies_keys = array_keys( $this->args['taxonomies'] );
+		$taxonomies_keys = array();
+		if ( isset( $this->args['taxonomies'] ) ) {
+			$taxonomies_keys = array_keys( $this->args['taxonomies'] );
+		}
 
 		if ( isset( $this->args['woof_settings']['items_order'] ) and ! empty( $this->args['woof_settings']['items_order'] ) ) {
 			$items_order = explode( ',', $this->args['woof_settings']['items_order'] );
@@ -297,7 +300,7 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 
 		if ( in_array( $toggle_option, array( 1, 2 ) ) ) {
 			if ( $toggle_state ) {
-				$css_classes .= " woof_closed_block";
+				$css_classes = " woof_closed_block";
 			} else {
 				$css_classes = str_replace( 'woof_closed_block', '', $css_classes );
 			}
@@ -313,15 +316,11 @@ class WOOFShortcode implements \Husky\Block\Shortcode\Template\Abstract\Shortcod
 		return $tooltip_text;
 	}
 	private function get_order_by_tax_only( $t_order ): array {
-		if ( ! count( $this->args['tax_only'] ) ) {
+		if ( ! isset( $this->args['tax_only'] ) || ! count( $this->args['tax_only'] ) ) {
 			return $t_order;
 		}
-		$temp_array = array_intersect( $t_order, $this->args['tax_only'] );
-		$i = 0;
-		foreach ( $temp_array as $key => $val ) {
-			$t_order[ $key ] = $this->args['tax_only'][ $i ];
-			$i++;
-		}
+		$t_order = array_intersect( $this->args['tax_only'], $t_order );
+
 		return $t_order;
 	}
 	private function get_order_by_step( $items_order ): array {
