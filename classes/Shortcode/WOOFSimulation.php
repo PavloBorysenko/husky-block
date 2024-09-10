@@ -79,7 +79,7 @@ class WOOFSimulation {
 	private function override_tax_display( array $tax_only ): void {
 		//overrides taxonomy display with shortcode attributes.
 		foreach ( $tax_only as $tax_filter_key ) {
-			if ( ! isset( $this->woof->settings['tax'][ $tax_filter_key ] ) ) {
+			if ( isset( $this->woof->settings['tax'][ $tax_filter_key ] ) ) {
 				$this->woof->settings['tax'][ $tax_filter_key ] = 1;
 			}
 		}
@@ -87,10 +87,13 @@ class WOOFSimulation {
 	private function override_by_only_display( array $by_only ): void {
 		//overrides taxonomy display with shortcode attributes.
 		foreach ( $by_only as $by_only_key ) {
+			if ( ! isset( $this->woof->settings[ $by_only_key ] ) ) {
+				continue;
+			}
 			$val = 1;
 			//exclusive exception for price.
 			if ( $by_only_key === 'by_price' ) {
-				$val = intval( woof()->settings[ $by_only_key ]['show'] );
+				$val = intval( $this->woof->settings[ $by_only_key ]['show'] );
 			}
 			//hook woof_regulate_by_only_show is need here only for price filter because its view depends of this value: 1,2,3,4,5.
 			$this->woof->settings[ $by_only_key ]['show'] = apply_filters( 'woof_regulate_by_only_show', $val, $by_only_key );

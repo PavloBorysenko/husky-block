@@ -11,6 +11,7 @@
                         <file>tests/test-HuskyFront.php</file>
                         <file>tests/test-HuskySimulation.php</file>
                         <file>tests/test-WOOFShortcode.php</file>
+                        <file>tests/test-WOOFSimulation.php</file>
                 </testsuite>
         </testsuites>
         <groups>

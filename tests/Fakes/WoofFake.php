@@ -15,6 +15,20 @@ class WoofFake implements WOOF {
 			'test_slug' => 1,
 			'test_slug_2' => 0,
 		),
+		'test_slug' => array(
+			'show' => 1
+		),
+		'test_slug_2' => array(
+			'show' => 0
+		),
+		'test_slug_3' => array(
+			'show' => 0
+		),
+		'tax' => array(
+			'test_tax' => 1,
+			'test_tax_2' => 0,
+		)
+
 	);
 	public $items_keys = array( 'by_price', 'by_text', 'by_author' );
 	public function get_taxonomies(): array {
